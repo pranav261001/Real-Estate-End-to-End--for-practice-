@@ -9,6 +9,9 @@ import pymysql
 from sklearn.model_selection import train_test_split
 
 from dataclasses import dataclass
+from src.components.data_transformation import DataTransformationConfig
+from src.components.data_transformation import DataTransformation
+
 
 @dataclass # directly define class variabele
 class DataIngestionConfig:
@@ -56,6 +59,9 @@ if __name__ == '__main__':
     obj = DataIngestion()
     obj.initiate_data_ingestion()
     train_p, test_p = obj.initiate_data_ingestion()
+
+    data_transformation_obj = DataTransformation()
+    data_transformation_obj.initiate_transformation(train_p, test_p)
     
     
 
